@@ -1,1 +1,6 @@
+# Keep README.md's generated spec section in sync when the spec is committed
+if ! git diff --cached --quiet -- apps/website/src/spec.mdx; then
+  node scripts/gen-readme.mjs && git add README.md
+fi
+
 vp staged
