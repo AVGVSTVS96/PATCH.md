@@ -29,7 +29,9 @@ export default defineConfig({
     tasks: {
       "gen-readme": {
         command: "node scripts/gen-readme.mjs",
-        input: ["apps/website/src/spec.mdx", "scripts/gen-readme.mjs"],
+        // README.md is also an input: it's hand-written outside the spec
+        // markers, so cache replay must not restore a stale copy of it.
+        input: ["apps/website/src/spec.mdx", "scripts/gen-readme.mjs", "README.md"],
         output: ["README.md"],
       },
     },
